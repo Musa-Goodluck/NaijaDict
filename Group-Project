@@ -1,0 +1,59 @@
+from tkinter import Tk, Entry, Button, Label, StringVar, OptionMenu, Frame
+
+# Initialize the main window
+window = Tk()
+window.geometry("600x400")
+window.title("Naija Dictionary")
+
+# Dictionaries for different Nigerian languages
+dictionaries = {
+
+    "Michika": {
+        'hwada': "tree", 'tsatsa': "stone", 'nanga': "house", 'fako': "child", 'bwala': "food",
+        'challa': "water", 'kaka': "firewood", 'sikala': "day", 'suwi': "night", 'kwang': "goat",
+        'mbala': "road", 'wila': "fish", 'nyanya': "mother", 'baba': "father", 'jaka': "donkey",
+        'lumba': "rice", 'dala': "friend", 'hwapa': "work", 'mwanwa': "sister", 'yawi': "brother"
+    },
+
+}
+
+# Variables
+selected_language = StringVar(value="Select a Language")
+result = StringVar()
+
+
+def show_search_ui():
+
+    if selected_language.get() == "Select a Language":
+        result.set("Please select a language first.")
+        return
+
+    search_frame.pack(pady=20)
+
+def search():
+
+    word = entry_text.get().lower()
+    if word in dictionaries[selected_language.get()]:
+        result.set(dictionaries[selected_language.get()][word])
+    else:
+        result.set("Not found")
+
+
+Label(window, text="Select a Language:", font=("Arial", 14)).pack(pady=10)
+language_menu = OptionMenu(window, selected_language, *dictionaries.keys(), command=lambda _: show_search_ui())
+language_menu.pack()
+
+
+search_frame = Frame(window)
+
+entry_text = Entry(search_frame, font=("Arial", 12))
+entry_text.pack(pady=5)
+
+
+search_btn = Button(search_frame, text="Search", font=("Arial", 12), command=search)
+search_btn.pack(pady=5)
+
+result_label = Label(search_frame, textvariable=result, font=("Arial", 12))
+result_label.pack(pady=10)
+
+window.mainloop()
