@@ -13,8 +13,7 @@ dictionaries = {
         'challa': "water", 'kaka': "firewood", 'sikala': "day", 'suwi': "night", 'kwang': "goat",
         'mbala': "road", 'wila': "fish", 'nyanya': "mother", 'baba': "father", 'jaka': "donkey",
         'lumba': "rice", 'dala': "friend", 'hwapa': "work", 'mwanwa': "sister", 'yawi': "brother"
-    },
-
+    }
 }
 
 # Variables
